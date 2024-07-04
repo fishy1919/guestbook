@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>留言板</title>
+</head>
+<body>
+    <h1>留言列表</h1>
+    <ul>
+        {% for msg in message_list%}
+        <li>{{ msg.created }} {{ msg.subject }}</li>
+        {% endfor %}
+    </ul>
+    <div>
+        <a href="/">首頁</a>
+        <a href="{% url 'msg_create' %}">新增留言</a>
+    </div>
+    <div>{% block content %}{% endblock %}</div>
+</body>
+</html>
