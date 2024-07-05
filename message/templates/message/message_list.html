@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>留言板</title>
+</head>
+<body>
+    {% extends "base.html" %}
+
+{% block content %}
+<ul>
+  {% for msg in message_list %}
+  <li>
+    {{ msg.created }}
+    <a href="{% url 'msg_view' msg.id %}">{{ msg.subject }}</a>
+    {% if user.is_authenticated %}
+        <a href="{% url 'msg_delete' msg.id %}">扔進辣雞桶</a>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}
+</body>
+</html>
